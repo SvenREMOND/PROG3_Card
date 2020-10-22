@@ -39,6 +39,7 @@ function addCartes() {
         var titre = (tab.cartes[i]['titre']);
         var theme = (tab.cartes[i]['theme']);
         var lien = (tab.cartes[i]['lien']);
+        var img = (tab.cartes[i]['img']);
 
         let newcard = `<div class="card" id="${id}">
                 <div class="box">
@@ -49,7 +50,7 @@ function addCartes() {
                             <p class="theme">${theme}</p>
                             <p class="description">${description}</p>
                         </div>
-                        <a href="${lien}" target="_blank">Page</a>
+                        <a class="link" href="${lien}" target="_blank">Page <span><img src="./img/${img}.png" ></span> </a>
                     </div>
                 </div>
                 </div>`;
@@ -201,24 +202,6 @@ function formButton(formulaire, card) {
 
 }
 
-function suppression(card) {
-
-    for (let i = 0; i < card.length; i++) {
-        var title = card[i].querySelector('h2')
-        var sup = document.createElement('span');
-        sup.innerText = "X";
-
-        title.insertAdjacentElement("beforebegin", sup)
-
-        sup.addEventListener("click", function () {
-            sup.parentElement.remove()
-        })
-
-    }
-
-}
-
-
 function all() {
 
     addCartes();
@@ -229,12 +212,33 @@ function all() {
     header(tag, formulaire)
     menu(card, formulaire);
     changeColor(card, themes);
+    suppression(card);
     form(tag);
     formButton(formulaire, card);
-    suppression(card);
 }
 
 all()
+
+function suppression(card) {
+
+    for (let i = 0; i < card.length; i++) {
+        var title = card[i].querySelector('h2')
+        var sup = document.createElement('span');
+        sup.innerText = "X";
+
+        title.insertAdjacentElement("beforebegin", sup)
+
+        sup.addEventListener("click", function () {
+            tab.cartes.splice(i, 1)
+            document.querySelector('.butt_form').remove()
+            document.querySelector('.container').innerHTML = "";
+            document.querySelector('header').remove();
+            all()
+        })
+
+    }
+
+}
 
 
 /* Fonction créer la carte */
@@ -246,10 +250,6 @@ function ajoutCarte() {
     var desc = formulaire.querySelector('textarea').value;
     var lien = formulaire.querySelector('input[type="url"]').value;
 
-    console.log(titre)
-    console.log(theme)
-    console.log(desc)
-    console.log(lien)
     var add = [];
 
     add['titre'] = titre
