@@ -448,8 +448,8 @@ form button{
 .link span{
     display: none;
     position: absolute;
-    top: -145px;
-    left: -83px;
+    top: -130px;
+    left: -6px;
 }
 
 .link span img{

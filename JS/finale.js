@@ -50,7 +50,7 @@ function addCartes() {
                             <p class="theme">${theme}</p>
                             <p class="description">${description}</p>
                         </div>
-                        <a class="link" href="${lien}" target="_blank">Page <span><img src="./img/${img}.png" ></span> </a>
+                        <p class="link"><a  href="${lien}" target="_blank">Page</a> <span><img src="./img/${img}.png" ></span> </p>
                     </div>
                 </div>
                 </div>`;
