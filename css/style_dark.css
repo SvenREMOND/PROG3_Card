@@ -454,6 +454,7 @@ form button{
 
 .link span img{
     width: 250px;
+    cursor: zoom-in;
 }
 
 .link:hover span{
